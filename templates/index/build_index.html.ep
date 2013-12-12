@@ -1,0 +1,25 @@
+% layout 'golden';
+% title 'Index';
+
+<h3> Index By </h3>
+<ul>
+    <li> <a href="/index?by=tags&dir=<%== $dir %>"> tags </a> </li>
+    <li> <a href="/index?by=alpha&dir=<%== $dir %>"> alphabetical </a> </li>
+    <li> <a href="/index?by=date&dir=<%== $dir %>"> date </a> </li>
+</ul>
+
+<% foreach my $key (sort {$a cmp $b} (keys $indexed)) { %>
+    <h4> <%= ucfirst $key %> </h4>
+        <ul>
+            <% foreach(@{$indexed->{$key}}) { %>
+                <li> 
+                    <a href="<%== "$_->{'dir'}/$_->{'file-name'}" %>">
+                        <%== $_->{'title'} %>
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+<% } %>
+
+
+

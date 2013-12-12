@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<% my $website_title = "Clinton McKay's Website"; %>
+
+<html lang='en'>
+    <head>
+        <meta charset=utf-8>
+        <title>Crmckay's Personal Website</title>
+        <link href='<%= url_for "/golden.css" %>' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div id='page_content'>
+            <div id='navigation'>
+                <div id='website_title'>
+                    <div class='vertical_centering'> 
+                        <div>
+                            <h2 id='clinton-mckays-website'>
+                                <a href='<%= url_for '/' %>' title='C. McKay dot com'><%== $website_title %></a> 
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <div id='website_navigation'>
+                    <div>
+                        <ul>
+                            <li><a href='/AboutMe.md' title='About Me'>About Me</a></li>
+                            <li><a href='/Resume.md' title='Resume'>Résumé</a></li>
+                            <li><a href='/Projects.md' title='Projects'>Projects</a></li>
+                            <li><a href='/index?dir=RO-Blog' title='RO Blog'>RO Blog</a></li>
+                            <li><a href='/' title='Index'>Index</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id='document_title'>
+                <div class='vertical_centering'>
+                    <div>
+                        <h1> <%== title %> </h1>
+                    </div>
+                </div>
+            </div>
+            <div id='document_body'>
+                <%= content %>
+            </div>
+        </div> 
+    </body>
+</html>
+
+

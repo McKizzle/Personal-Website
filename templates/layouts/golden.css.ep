@@ -1,0 +1,122 @@
+body {
+    height: 100%;
+    width:  100%;
+    margin:     16px 0px 16px 0px;
+    padding:    0px 0px 0px 0px;
+}
+
+img {
+    max-width: 672px; 
+    height: auto;
+}
+
+#page_content {
+    margin: 0 auto;
+    width:  800px;
+    min-height: 1295px;
+    background-color: black;
+}
+
+#navigation {
+    width:  304px;
+    height: 496px;
+    background-color: #282828;
+    float: left;
+}
+
+#navigation h2 {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* website_title is 304x304px */
+#navigation #website_title {
+    width:  272px;
+    height: 272px; 
+    padding: 16px;
+    background-color: #D0D0D0;
+}
+
+#website_title a, a:hover {
+    text-decoration: none;
+    color: #404040;
+}
+
+/* website_navigation is 207x192px */
+#navigation #website_navigation {
+    width:  175px;
+    height: 160px;
+    padding: 16px;
+    background-color: #F0F0F0;
+    display: table;
+}
+
+#website_navigation > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#website_navigation ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+#website_navigation li {
+    display: block;
+    padding: 0px; 
+    margin: 0px;
+    font-size: 14pt;
+}
+
+#website_navigation a {
+    padding: 2px 0px 2px 0px;
+    margin: 2px 0px 2px 0px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    color: #404040;
+    background-color: #FEFEFE;
+    border: 1px solid #404040;
+}
+#website_navigation a:hover {
+    text-decoration: none;
+    color: #FEFEFE;
+    background-color: #404040;
+}
+
+/* document_title is 496x496px */
+#document_title {
+    width:  432px;
+    height: 432px;
+    padding: 32px;
+    float:  right;
+    background-color: #404040;
+    color: #FEFEFE;
+    text-align: right;
+}
+
+#document_title h1 { 
+    padding: 0px;
+    margin: 0px;
+}
+
+/* document_title is 800x800px */
+#document_body {
+    clear:  both;
+    width:  672px;
+    min-height: 672px;
+    padding: 64px;
+    background-color: #888888;
+}
+
+.vertical_centering {
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+
+.vertical_centering > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+

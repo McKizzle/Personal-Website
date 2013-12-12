@@ -1,0 +1,18 @@
+% layout 'golden';
+% title 'Index';
+
+<% foreach my $key (sort {$a cmp $b} (keys $indexed)) { %>
+    <h4> <%= ucfirst $key %> </h4>
+        <ul>
+            <% foreach(@{$indexed->{$key}}) { %>
+                <li> 
+                    <a href="<%== "$_->{'dir'}/$_->{'file-name'}" %>">
+                        <%== $_->{'title'} %>
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+<% } %>
+
+
+
