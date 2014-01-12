@@ -21,7 +21,7 @@ $path =~ s/[^\/]+\/[^\/]+$//gi;
 $ENV{MOJO_HOME} = $path;
 $ENV{MOJO_MODE} = 'development';
 #$ENV{MOJO_MODE} = 'production';
-$ENV{MARKDOWN_DIR} = 'markdown/markdown/';
+$ENV{POSTS_DIR} = 'posts/myposts/';
 
 #Mojolicious::Commands->start_app('PersonalWebsite', 'daemon', '-l', 'http://*:3000', '--mode', 'production');
 Mojolicious::Commands->start_app('PersonalWebsite', 'daemon', '-l', 'http://*:3000');

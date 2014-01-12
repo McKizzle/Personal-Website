@@ -8,7 +8,7 @@ my $DIRPATH_KEY = 'dir-path';
 my $DIR_KEY = 'dir';
 my $FILENAME_KEY = 'file-name';
 
-my $markdown_dir = "markdown";
+my $markdown_dir = $ENV{POSTS_DIR};
 
 # Takes in a hash and returns an index based on the yaml key provided.
 sub index_by_yaml {

@@ -6,8 +6,10 @@
         <meta charset=utf-8>
         <title>Crmckay's Personal Website</title>
         <link href='<%= url_for "/golden.css" %>' rel='stylesheet' type='text/css'>
+        <link href="/prettify/desert.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="/prettify/prettify.js"></script>
     </head>
-    <body>
+    <body onload="prettyPrint()">
         <div id='page_content'>
             <div id='navigation'>
                 <div id='website_title'>
