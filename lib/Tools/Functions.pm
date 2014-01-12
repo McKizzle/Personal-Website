@@ -38,8 +38,8 @@ sub mddir2yaml {
 
     my @documents = ();
     while(my $file = readdir($opendir)) {
-        # print "mddir2yaml File: $file\n";
-        if(-f "$dir$file" && ($file =~ /[.]md/)) {
+        #print "mddir2yaml File: $file\n";
+        if(-f "$dir$file" && ($file =~ /[.]md$/)) {
             # print "mddir2yaml found a markdown file\n";
             # If a file then read the yaml at the beginning of the document.
             open my $fh, "<$dir$file", or print "Failed to open the document\n $!";
