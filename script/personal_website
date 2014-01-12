@@ -3,15 +3,25 @@
 
 use strict;
 use warnings;
+use Cwd 'abs_path';
 
 use FindBin;
 BEGIN { unshift @INC, "$FindBin::Bin/../lib" }
 
 # Start command line interface for application
 require Mojolicious::Commands;
-#$ENV{MOJO_MODE} = 'production';
+
+# Change directory to the root folder of the Mojolicious App. 
+my $path = abs_path($0);
+#print "\$0: $path \n";
+#$path =~ s/personal_website//gi;
+$path =~ s/[^\/]+\/[^\/]+$//gi;
+#print "New Home: $path\n";
+
+$ENV{MOJO_HOME} = $path;
 $ENV{MOJO_MODE} = 'development';
-#$ENV{MOJO_HOME} = '/apache/personal_website/';
+#$ENV{MOJO_MODE} = 'production';
+$ENV{MARKDOWN_DIR} = 'markdown/markdown/';
 
 #Mojolicious::Commands->start_app('PersonalWebsite', 'daemon', '-l', 'http://*:3000', '--mode', 'production');
 Mojolicious::Commands->start_app('PersonalWebsite', 'daemon', '-l', 'http://*:3000');

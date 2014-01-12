@@ -5,7 +5,7 @@ use Text::Markdown;
 use Data::Dumper;
 use Cwd qw(abs_path getcwd);
 
-my $markdown_dir = "markdown/";
+my $markdown_dir = $ENV{MARKDOWN_DIR}; # "markdown/";
 
 sub parse {
     my $self = shift;
@@ -16,6 +16,7 @@ sub parse {
 	
     $self->app->log->debug("File: ". $md_path);
     $self->app->log->debug("ABS CWD: ". abs_path($md_path));
+    $self->app->log->debug("CWD: ". getcwd);
 
     #open my $dir, getcwd() or $self->app->log->debug("Couldn't open ". getcwd() . ": $!");
     #my @files = readdir($dir);

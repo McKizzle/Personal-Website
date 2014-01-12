@@ -1,0 +1,6 @@
+# Ingore Everything in the directory
+*
+# Excep this file
+!.gitignore
+!ExampleMarkdown.md
+

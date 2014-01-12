@@ -11,12 +11,10 @@ sub startup {
     # Change the directory to the home directory. 
     # Allows the proper functioning of all of the
     # other modules that read files. 
-    my $home = Mojo::Home->new;
-    $home->detect;
-    chdir($home);
-    chdir("../");
-    $self->log->info("CWD: ".getcwd());
-    $self->log->info("HOME: ".$home);
+    #my $home = Mojo::Home->new;
+    #$home->detect;
+    $self->log->info("MOJO_HOME: ". $self->$home);
+    $self->log->debug("LIB_DIR: ". $self->$home->lib_dir); 
 
     # Router
     my $r = $self->routes;
