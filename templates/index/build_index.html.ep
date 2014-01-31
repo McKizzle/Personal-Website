@@ -8,8 +8,16 @@
     <li> <a href="/index?by=date&dir=<%== $dir %>"> date </a> </li>
 </ul>
 
-<% foreach my $key (sort {$a cmp $b} (keys $indexed)) { %>
-    <h4> <%= ucfirst $key %> </h4>
+% use Date::Format;
+% use Data::Dumper;
+<% if($date_sort) { %>
+    <% foreach my $key (sort {$b <=> $a} (keys $indexed)) { %>
+        % if(!($key == -1)) {
+            <h4> <%= time2str("%D", $key) %> </h4>
+        % } else { 
+            <h4> <%= "------" %> </h4>
+        % }
+
         <ul>
             <% foreach(@{$indexed->{$key}}) { %>
                 <li> 
@@ -19,6 +27,22 @@
                 </li>
             <% } %>
         </ul>
+    <% } %>
+<% } else { %>
+    <% foreach my $key (sort {$a cmp $b} (keys $indexed)) { %>
+        % if(@{$indexed->{$key}} > 0) {
+        <h4> <%= ucfirst $key %> </h4>
+            <ul>
+                % foreach(@{$indexed->{$key}}) { 
+                    <li> 
+                        <a href="<%== "$_->{'dir'}/$_->{'file-name'}" %>">
+                            <%== $_->{'title'} %>
+                        </a>
+                    </li>
+                % }
+            </ul>
+        % }
+    <% } %>
 <% } %>
 
 

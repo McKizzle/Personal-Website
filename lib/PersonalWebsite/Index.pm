@@ -2,6 +2,7 @@ package PersonalWebsite::Index;
 use Mojo::Base 'Mojolicious::Controller';
 use Tools::Functions qw(mddir2yaml fh4yaml fh4md);
 use Data::Dumper;
+use Date::Parse;
 use Cwd;
 
 my $DIRPATH_KEY = 'dir-path';
@@ -72,13 +73,45 @@ sub index_by_alpha {
     return \%index;
 }
 
+# Takes a list of markdown documents and sorts them by their creation date. 
+sub index_by_date {
+    my $yaml_ar = shift;
+    my $index_key = shift;
+
+    my $no_date = "-1";
+
+    my %index = ();
+    foreach(@$yaml_ar) {
+        my %hr = %$_;
+        my $str_date = $hr{$index_key};
+        my $date = str2time($str_date);
+
+        if(defined $date) {
+            if($index{$date}) {
+                push @{$index{$date}}, \%hr;
+            } else {
+                $index{$date} = [\%hr];
+            }
+        } else {
+            if($index{$no_date}) {
+                push @{$index{$no_date}}, \%hr;
+            } else {
+                $index{$no_date} = [\%hr];
+            }
+        }
+    }
+    return \%index;
+}
+
 # Selects indexing function.
 sub index_by {
     my $yaml_ar = shift;
     my $index_key = shift;
     
     if($index_key eq 'alpha') {
-        return index_by_alpha($yaml_ar, 'title'); # default to alphabetical by title. 
+        return index_by_alpha($yaml_ar, 'title'); # default to alphabetical by title.  
+    } elsif($index_key eq 'date') {
+        return index_by_date($yaml_ar, 'date'); 
     } else {
         return index_by_yaml($yaml_ar, $index_key);
     }
@@ -105,7 +138,8 @@ sub build_index {
     $self->render(
         indexed => $indexed,
         website_title => "Clinton McKay's Website",
-        dir => $index_dir
+        dir => $index_dir,
+        date_sort => ($index_by eq 'date') ? 1 : 0
     );
 }
 
