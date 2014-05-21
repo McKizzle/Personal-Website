@@ -1,15 +1,18 @@
 % layout 'golden';
 % title 'Index';
 
+<div class="index">
 <h3> Index By </h3>
 <ul>
     <li> <a href="/index?by=tags&dir=<%== $dir %>"> tags </a> </li>
     <li> <a href="/index?by=alpha&dir=<%== $dir %>"> alphabetical </a> </li>
     <li> <a href="/index?by=date&dir=<%== $dir %>"> date </a> </li>
 </ul>
+<div>
 
 % use Date::Format;
 % use Data::Dumper;
+<div class="index">
 <% if($date_sort) { %>
     <% foreach my $key (sort {$b <=> $a} (keys $indexed)) { %>
         % if(!($key == -1)) {
@@ -44,6 +47,7 @@
         % }
     <% } %>
 <% } %>
+</div>
 
 
 

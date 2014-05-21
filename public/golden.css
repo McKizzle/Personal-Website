@@ -10,6 +10,29 @@ img {
     height: auto;
 }
 
+/* The index formatting for the index page */
+.index a {
+    padding: 2px 2px 2px 2px;
+    margin: 2px 0px 2px 0px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    color: #404040;
+    background-color: #F0F0F0;
+}
+.index a:hover {
+    text-decoration: none;
+    color: #FEFEFE;
+    background-color: #404040;
+}
+.index ul {
+    list-style-type:none;
+}
+.index ul>li {
+    display:inline-block;
+}
+/********************************************/
+
 #page_content {
     margin: 0 auto;
     width:  800px;
