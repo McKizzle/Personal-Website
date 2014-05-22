@@ -25,12 +25,24 @@ sub fh4md;
 #       and yaml information
 sub mddir2yaml {
     my $dir = shift;
+    my $root_dir = shift; 
 
     $dir = "$dir/";
+    $root_dir = "$root_dir/";
+    
+    # Remove the extra '/' characters.  
+    $dir =~ tr/\/+/\//s;
+    $root_dir =~ tr/\/+/\//s;
+
+    # if a markdown file is located then only use the path RELATIVE to the 
+    # 'posts' directory (or whatever directory is being used)
+    my $dir_to_use = $dir;
+    $dir_to_use =~ s/$root_dir//;
 
     my %tags = ();
 
     #print "mddir2yaml directory: " . $dir . "\n";
+    #print "mddir2yaml root directory: " . $root_dir . "\n";
     #print "mddir2yaml cwd: " . getcwd() . "\n";
      
     # First get a listing all all the folders in markdown folder.
@@ -45,11 +57,10 @@ sub mddir2yaml {
             open my $fh, "<$dir$file", or print "Failed to open the document\n $!";
             my $meta = fh4yaml $fh;
             close $fh;
-            
+ 
             # Store relavent information in the hash so that other modules can reopen the file.
-            my @dp = split '/', $dir;
             $meta->{$DIRPATH_KEY} = $dir;
-            $meta->{$DIR_KEY} = (@dp == 1) ? '' : $dp[@dp - 1];
+            $meta->{$DIR_KEY} = $dir_to_use;
             $meta->{$FILENAME_KEY} = $file;
 
             push @documents, $meta;
@@ -58,7 +69,7 @@ sub mddir2yaml {
         ) {
             # If a folder is found then recurse.
             # print "mddir2yaml found folder,... Recurse\n";
-            my $dir_documents = mddir2yaml "$dir$file/";
+            my $dir_documents = mddir2yaml "$dir$file/", "$root_dir";
             push @documents, @$dir_documents;
         } else {
             # print "mddir2yaml $dir$file is a special file\n";

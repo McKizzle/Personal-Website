@@ -125,12 +125,11 @@ sub build_index {
     my $index_by = (defined($self->param('by'))) ? $self->param('by') : 'tags' ;
     my $index_dir = (defined($self->param('dir'))) ? $self->param('dir') : '';
 
-    #print "INDEX DIR: $markdown_dir/$index_dir\n";
-    #print "INDEX BY: $index_by\n";
-    #print "URL:".$self->req->url. "\n";
+    $self->app->log->debug("Posts Directory: $markdown_dir/$index_dir");
+    $self->app->log->debug("Index By: $index_by");
 
     # Extract yaml, index files, and build a url list.
-    my $yaml = mddir2yaml("$markdown_dir/$index_dir");
+    my $yaml = mddir2yaml("$markdown_dir/$index_dir", "$markdown_dir/$index_dir");
     my $indexed = index_by($yaml, $index_by); 
 
     #print Dumper $yaml;
