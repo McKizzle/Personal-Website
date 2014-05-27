@@ -8,6 +8,7 @@
         <link href='<%= url_for "/golden.css" %>' rel='stylesheet' type='text/css'>
         <link href="/prettify/desert.css" type="text/css" rel="stylesheet" />
         <script type="text/javascript" src="/prettify/prettify.js"></script>
+        <script type="text/javascript" src="/ganalytics.js"></script>
     </head>
     <body onload="prettyPrint()">
         <div id='page_content'>
