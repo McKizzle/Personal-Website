@@ -9,6 +9,12 @@
         <link href="/prettify/desert.css" type="text/css" rel="stylesheet" />
         <script type="text/javascript" src="/prettify/prettify.js"></script>
         <script type="text/javascript" src="/ganalytics.js"></script>
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
+        <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
     </head>
     <body onload="prettyPrint()">
         <div id='page_content'>

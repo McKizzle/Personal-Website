@@ -127,18 +127,19 @@ sub build_index {
 
     $self->app->log->debug("Posts Directory: $markdown_dir/$index_dir");
     $self->app->log->debug("Index By: $index_by");
+    $self->app->log->debug("Directory: $index_dir");
 
     # Extract yaml, index files, and build a url list.
-    my $yaml = mddir2yaml("$markdown_dir/$index_dir", "$markdown_dir/$index_dir");
+    my $yaml = mddir2yaml("$markdown_dir/$index_dir", "$markdown_dir");
     my $indexed = index_by($yaml, $index_by); 
 
     #print Dumper $yaml;
      
     $self->render(
-        indexed => $indexed,
-        website_title => "Clinton McKay's Website",
-        dir => $index_dir,
-        date_sort => ($index_by eq 'date') ? 1 : 0
+        'indexed' => $indexed,
+        'website_title' => "Clinton McKay's Website",
+        'dir' => $index_dir,
+        'date_sort' => ($index_by eq 'date') ? 1 : 0
     );
 }
 

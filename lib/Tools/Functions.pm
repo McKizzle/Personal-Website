@@ -29,16 +29,16 @@ sub mddir2yaml {
 
     $dir = "$dir/";
     $root_dir = "$root_dir/";
-    
+
     # Remove the extra '/' characters.  
     $dir =~ tr/\/+/\//s;
     $root_dir =~ tr/\/+/\//s;
 
     # if a markdown file is located then only use the path RELATIVE to the 
     # 'posts' directory (or whatever directory is being used)
-    my $dir_to_use = $dir;
+    my $dir_to_use = "$dir";
     $dir_to_use =~ s/$root_dir//;
-
+    
     my %tags = ();
 
     #print "mddir2yaml directory: " . $dir . "\n";

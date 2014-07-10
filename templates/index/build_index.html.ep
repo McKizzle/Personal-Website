@@ -8,7 +8,7 @@
     <li> <a href="/index?by=alpha&dir=<%== $dir %>"> alphabetical </a> </li>
     <li> <a href="/index?by=date&dir=<%== $dir %>"> date </a> </li>
 </ul>
-<div>
+</div>
 
 % use Date::Format;
 % use Data::Dumper;
