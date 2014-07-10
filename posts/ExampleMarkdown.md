@@ -16,6 +16,10 @@ All documents must have at least the `title` and `tags` elements. Other elements
 
 ## Example
 
+<script src="https://gist.github.com/McKizzle/f82857eb82a31311f575.js"></script>
+
+
+
 
 
 
